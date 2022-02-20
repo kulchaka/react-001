@@ -643,6 +643,10 @@ input[type=submit].github {
   list-style: none;
   padding: 5px 0;
 }
+.restaurant_select_bottom ul li:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
 .restaurant_select_bottom ul li::before {
   content: '■';
   margin-right: 0.5rem;
