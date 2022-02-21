@@ -8,7 +8,11 @@ class App extends Component {
     return (
       <div className='burger-paradise'>
         <div className='menu'>
-          <Header/>
+          <Header
+            title='Hot Burgers'
+            amount={10}
+            hot={true}
+          />
         </div>
         <Order/>
         <MenuManagement/>
