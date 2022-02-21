@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {render} from "react-dom";
 import './css/style.css'
-import Landing from "./components/Landing";
+import App from "./components/App";
 
-render(<Landing/>, document.querySelector('#root'))
+render(<App/>, document.querySelector('#root'))
