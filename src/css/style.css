@@ -277,6 +277,9 @@ header.top .header-content .header-divider {
   margin-bottom: 8px;
   background-color: #fff;
 }
+.header-title-theme {
+  text-shadow: 0 0 3px #615f5f, 0 0 5px #ea3d3d;
+}
 header.top .header-content h1 {
   font-size: 3.4rem;
 }

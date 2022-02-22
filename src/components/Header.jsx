@@ -6,7 +6,7 @@ const Header = (props) => (
       <div className='header-content'>
         <div className="header-rating">
           <div className='header-rating_tag'>Rating</div>
-          <div className='header-rating_icon'>⭐️⭐️⭐️⭐️⭐️</div>
+          <div className='header-title-theme header-rating_icon'><span role="img" aria-labelledby="stars">⭐️⭐️⭐️⭐️⭐️</span></div>
         </div>
         <div className="header-divider"></div>
         <h1 className='font-effect-fire-animation'>{props.title}</h1>
