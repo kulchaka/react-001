@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from "./Header";
 import Order from "./Order";
 import MenuManagement from "./MenuManagement";
+import sampleBurgers from "../sample-burgers";
 
 class App extends Component {
 
@@ -16,6 +17,10 @@ class App extends Component {
     this.setState({burgers})
   }
 
+  loadSampleBurgers = () => {
+    this.setState({burgers: sampleBurgers})
+  }
+
 
   render() {
     return (
@@ -28,7 +33,7 @@ class App extends Component {
           />
         </div>
         <Order/>
-        <MenuManagement addBurger={this.addBurger}/>
+        <MenuManagement addBurger={this.addBurger} loadSampleBurgers={this.loadSampleBurgers}/>
       </div>
     );
   }

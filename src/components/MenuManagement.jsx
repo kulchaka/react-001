@@ -7,6 +7,7 @@ class MenuManagement extends Component {
       <div className='menu-admin'>
         <h2>Menu Management</h2>
         <AddBurgerForm addBurger={this.props.addBurger}/>
+        <button onClick={this.props.loadSampleBurgers}>Add Burgers</button>
       </div>
     );
   }
