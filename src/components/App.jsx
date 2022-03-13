@@ -3,6 +3,7 @@ import Header from "./Header";
 import Order from "./Order";
 import MenuManagement from "./MenuManagement";
 import sampleBurgers from "../sample-burgers";
+import Burger from "./Burger";
 
 class App extends Component {
 
@@ -31,6 +32,11 @@ class App extends Component {
             amount={10}
             hot={true}
           />
+          {
+            Object.keys(this.state.burgers).map(key => {
+              return <Burger key={key} details={this.state.burgers[key]}/>
+            })
+          }
         </div>
         <Order/>
         <MenuManagement addBurger={this.addBurger} loadSampleBurgers={this.loadSampleBurgers}/>
