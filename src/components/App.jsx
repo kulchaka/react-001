@@ -11,7 +11,6 @@ class App extends Component {
   }
 
   addBurger = (burger) => {
-    console.log('Add Burger', burger)
     const burgers = {...this.state.burgers}
     burgers[`burger${Date.now()}`] = burger
     this.setState({burgers})
