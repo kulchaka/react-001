@@ -4,6 +4,20 @@ import Order from "./Order";
 import MenuManagement from "./MenuManagement";
 
 class App extends Component {
+
+  state = {
+    burgers: {},
+    orders: {}
+  }
+
+  addBurger = (burger) => {
+    console.log('Add Burger', burger)
+    const burgers = {...this.state.burgers}
+    burgers[`burger${Date.now()}`] = burger
+    this.setState({burgers})
+  }
+
+
   render() {
     return (
       <div className='burger-paradise'>
@@ -15,7 +29,7 @@ class App extends Component {
           />
         </div>
         <Order/>
-        <MenuManagement/>
+        <MenuManagement addBurger={this.addBurger}/>
       </div>
     );
   }

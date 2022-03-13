@@ -17,7 +17,7 @@ class AddBurgerForm extends Component {
       descr: this.descrRef.current.value,
       image: this.imageRef.current.value
     }
-    console.log(burger)
+    this.props.addBurger(burger)
   }
 
   render() {
