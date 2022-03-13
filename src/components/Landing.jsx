@@ -24,7 +24,7 @@ class Landing extends Component {
     })
   }
 
-  chooseRestaurant =() => {
+  chooseRestaurant = () => {
     console.log('You have chosen restaurant>>>: ', this.state.title)
     const {url} = this.state
     console.log(url)
