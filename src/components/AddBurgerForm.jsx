@@ -10,12 +10,14 @@ class AddBurgerForm extends Component {
 
   createBurger = (event) => {
     event.preventDefault()
-    console.log("create Burger")
-    console.log(this.nameRef.current.value)
-    console.log(this.priceRef.current.value)
-    console.log(this.statusRef.current.value)
-    console.log(this.descrRef.current.value)
-    console.log(this.imageRef.current.value)
+    const burger = {
+      name: this.nameRef.current.value,
+      price: +this.priceRef.current.value,
+      status: this.statusRef.current.value,
+      descr: this.descrRef.current.value,
+      image: this.imageRef.current.value
+    }
+    console.log(burger)
   }
 
   render() {
