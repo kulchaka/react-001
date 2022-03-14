@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 
 class Burger extends Component {
+
+  handleClick = () => {
+    this.props.addToOrder(this.props.index)
+  }
+
   render() {
 
-    const {name, price, image, desc} = this.props.details
+    const {name, price, image, desc, status} = this.props.details
+    const isAvailable = status === 'available'
 
     return (
       <li className="menu-burger">
@@ -16,7 +22,12 @@ class Burger extends Component {
             <span className="price">{price}</span>
           </h3>
           <p>{desc}</p>
-          <button className="buttonOrder">Order</button>
+          <button
+            onClick={this.handleClick}
+            disabled={!isAvailable}
+            className="buttonOrder">
+            {isAvailable ? 'Order' : 'NOT Available'}
+          </button>
         </div>
       </li>
     );
