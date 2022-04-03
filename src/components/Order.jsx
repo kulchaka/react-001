@@ -2,6 +2,14 @@ import React, {Component} from 'react';
 
 class Order extends Component {
   render() {
+    const renderList = (key) => {
+      const isAvailable = this.props.burgers[key] && this.props.burgers[key].status === 'available'
+      if (!isAvailable) {
+        return  <li key={key}>{this.props.burgers[key].name} NOT AVAILABLE</li>
+      }
+      return <li key={key}>{this.props.burgers[key].name} x {this.props.orders[key]}</li>
+    }
+
     const orderIds = Object.keys(this.props.orders)
     const totalPrice = orderIds.reduce((prev, key) => {
       const isAvailable = this.props.burgers[key] && this.props.burgers[key].status === 'available'
@@ -15,7 +23,7 @@ class Order extends Component {
         <h2>Your order:</h2>
         <ul className="order">
           {
-            orderIds.map(e => <li key={e}>{this.props.burgers[e].name} x {this.props.orders[e]}</li>)
+            orderIds.map(e => renderList(e))
           }
         </ul>
         <p>{totalPrice || null}</p>
