@@ -4,7 +4,11 @@ class Order extends Component {
   render() {
     const orderIds = Object.keys(this.props.orders)
     const totalPrice = orderIds.reduce((prev, key) => {
-      return prev + this.props.burgers[key].price * this.props.orders[key]
+      const isAvailable = this.props.burgers[key] && this.props.burgers[key].status === 'available'
+      if (isAvailable) {
+        return prev + this.props.burgers[key].price * this.props.orders[key]
+      }
+      return prev
     }, 0)
     return (
       <div className='order-wrap'>
@@ -14,7 +18,7 @@ class Order extends Component {
             orderIds.map(e => <li key={e}>{this.props.burgers[e].name} x {this.props.orders[e]}</li>)
           }
         </ul>
-        <p>{totalPrice}</p>
+        <p>{totalPrice || null}</p>
       </div>
     );
   }
