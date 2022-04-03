@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Shipment from "./Shipment";
 
 class Order extends Component {
   render() {
@@ -11,7 +12,7 @@ class Order extends Component {
         <span>
           <span>{this.props.orders[key]} </span>
            x burgers {this.props.burgers[key].name}
-          <span> { this.props.orders[key] * this.props.burgers[key].price}</span>
+          <span> {this.props.orders[key] * this.props.burgers[key].price}</span>
           <button className="cancellItem">&times;</button>
         </span>
       </li>
@@ -33,15 +34,11 @@ class Order extends Component {
             orderIds.map(e => renderList(e))
           }
         </ul>
-        <div className="total">
-          <div className="total_wrap">
-            {
-              totalPrice
-                ? <div className="total_wrap-final">Total price: {totalPrice}</div>
-                : null
-            }
-          </div>
-        </div>
+        {
+          totalPrice ?
+            (<Shipment totalPrice={totalPrice}/>)
+            : (<div className="nothingSelected">Nothing Selected</div>)
+        }
       </div>
     );
   }
