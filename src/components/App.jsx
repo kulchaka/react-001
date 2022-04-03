@@ -44,7 +44,7 @@ class App extends Component {
             })
           }
         </div>
-        <Order/>
+        <Order orders={this.state.orders} burgers={this.state.burgers}/>
         <MenuManagement
           addBurger={this.addBurger}
           loadSampleBurgers={this.loadSampleBurgers}
