@@ -5,9 +5,16 @@ class Order extends Component {
     const renderList = (key) => {
       const isAvailable = this.props.burgers[key] && this.props.burgers[key].status === 'available'
       if (!isAvailable) {
-        return  <li key={key}>{this.props.burgers[key].name} NOT AVAILABLE</li>
+        return <li className="unavailable" key={key}> Sorry, {this.props.burgers[key].name} NOT AVAILABLE</li>
       }
-      return <li key={key}>{this.props.burgers[key].name} x {this.props.orders[key]}</li>
+      return <li key={key}>
+        <span>
+          <span>{this.props.orders[key]} </span>
+           x burgers {this.props.burgers[key].name}
+          <span> { this.props.orders[key] * this.props.burgers[key].price}</span>
+          <button className="cancellItem">&times;</button>
+        </span>
+      </li>
     }
 
     const orderIds = Object.keys(this.props.orders)
@@ -26,7 +33,15 @@ class Order extends Component {
             orderIds.map(e => renderList(e))
           }
         </ul>
-        <p>{totalPrice || null}</p>
+        <div className="total">
+          <div className="total_wrap">
+            {
+              totalPrice
+                ? <div className="total_wrap-final">Total price: {totalPrice}</div>
+                : null
+            }
+          </div>
+        </div>
       </div>
     );
   }
