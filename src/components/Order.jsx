@@ -5,6 +5,9 @@ class Order extends Component {
   render() {
     const renderList = (key) => {
       const isAvailable = this.props.burgers[key] && this.props.burgers[key].status === 'available'
+
+      if (!this.props.burgers[key]) return null
+
       if (!isAvailable) {
         return <li className="unavailable" key={key}> Sorry, {this.props.burgers[key].name} NOT AVAILABLE</li>
       }
