@@ -8,7 +8,7 @@ class MenuManagement extends Component {
       <div className='menu-admin'>
         <h2>Menu Management</h2>
         {
-          Object.keys(this.props.burgers).map(el => <EditBurgerForm burger={this.props.burgers[el]} key={el}/>)
+          Object.keys(this.props.burgers).map(key => <EditBurgerForm burger={this.props.burgers[key]} key={key}/>)
         }
         <AddBurgerForm addBurger={this.props.addBurger}/>
         <button onClick={this.props.loadSampleBurgers}>Add Burgers</button>
