@@ -1,25 +1,24 @@
-import React, {Component, createRef} from 'react';
+import React, { Component, createRef } from "react";
 
 class AddBurgerForm extends Component {
-
-  nameRef = createRef()
-  priceRef = createRef()
-  statusRef = createRef()
-  descrRef = createRef()
-  imageRef = createRef()
+  nameRef = createRef();
+  priceRef = createRef();
+  statusRef = createRef();
+  descrRef = createRef();
+  imageRef = createRef();
 
   createBurger = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const burger = {
       name: this.nameRef.current.value,
       price: +this.priceRef.current.value,
       status: this.statusRef.current.value,
       descr: this.descrRef.current.value,
-      image: this.imageRef.current.value
-    }
-    this.props.addBurger(burger)
-    event.currentTarget.reset()
-  }
+      image: this.imageRef.current.value,
+    };
+    this.props.addBurger(burger);
+    event.currentTarget.reset();
+  };
 
   render() {
     return (
@@ -38,15 +37,11 @@ class AddBurgerForm extends Component {
           placeholder="Price"
           autoComplete="off"
         />
-        <select
-          ref={this.statusRef}
-          name="status"
-          className="status"
-        >
+        <select ref={this.statusRef} name="status" className="status">
           <option value="available">Accessed</option>
           <option value="unavailable">NOT available</option>
         </select>
-        <textarea ref={this.descrRef} name="descr" placeholder="Descr"/>
+        <textarea ref={this.descrRef} name="descr" placeholder="Descr" />
         <input
           ref={this.imageRef}
           type="text"
@@ -58,6 +53,6 @@ class AddBurgerForm extends Component {
       </form>
     );
   }
-};
+}
 
 export default AddBurgerForm;

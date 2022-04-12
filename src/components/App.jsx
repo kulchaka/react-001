@@ -72,6 +72,7 @@ class App extends Component {
         <MenuManagement
           addBurger={this.addBurger}
           loadSampleBurgers={this.loadSampleBurgers}
+          burgers={this.state.burgers}
         />
       </div>
     );
