@@ -62,6 +62,7 @@ class App extends Component {
     const burgers = {...this.state.burgers}
     burgers[key] = null
     this.setState({burgers})
+    this.deleteBurgerFromOrder(key)
   }
 
   deleteBurgerFromOrder = (key) => {
