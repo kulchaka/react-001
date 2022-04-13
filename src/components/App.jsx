@@ -64,6 +64,12 @@ class App extends Component {
     this.setState({burgers})
   }
 
+  deleteBurgerFromOrder = (key) => {
+    const orders = {...this.state.orders}
+    delete orders[key]
+    this.setState({orders})
+  }
+
   render() {
     return (
       <div className='burger-paradise'>
@@ -79,7 +85,7 @@ class App extends Component {
             })
           }
         </div>
-        <Order orders={this.state.orders} burgers={this.state.burgers}/>
+        <Order orders={this.state.orders} burgers={this.state.burgers} deleteBurgerFromOrder={this.deleteBurgerFromOrder}/>
         <MenuManagement
           addBurger={this.addBurger}
           loadSampleBurgers={this.loadSampleBurgers}

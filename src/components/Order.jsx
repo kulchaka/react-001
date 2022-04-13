@@ -16,7 +16,7 @@ class Order extends Component {
           <span>{this.props.orders[key]} </span>
            x burgers {this.props.burgers[key].name}
           <span> {this.props.orders[key] * this.props.burgers[key].price}</span>
-          <button className="cancellItem">&times;</button>
+          <button onClick={() => this.props.deleteBurgerFromOrder(key)} className="cancellItem">&times;</button>
         </span>
       </li>
     }
