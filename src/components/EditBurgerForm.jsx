@@ -6,7 +6,7 @@ class EditBurgerForm extends Component {
       ...this.props.burger,
       [event.currentTarget.name]: event.currentTarget.value
     }
-    console.log(updBurger)
+    this.props.updBurgers(this.props.index, updBurger)
   }
 
   render() {

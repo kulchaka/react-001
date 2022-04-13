@@ -52,6 +52,12 @@ class App extends Component {
     this.setState({orders: order})
   }
 
+  updBurgers = (key, updBurger) => {
+    const burgers = {...this.state.burgers}
+    burgers[key] = updBurger
+    this.setState({burgers})
+  }
+
   render() {
     return (
       <div className='burger-paradise'>
@@ -72,6 +78,7 @@ class App extends Component {
           addBurger={this.addBurger}
           loadSampleBurgers={this.loadSampleBurgers}
           burgers={this.state.burgers}
+          updBurgers={this.updBurgers}
         />
       </div>
     );
