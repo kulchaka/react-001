@@ -58,6 +58,12 @@ class App extends Component {
     this.setState({burgers})
   }
 
+  deleteBurger = (key) => {
+    const burgers = {...this.state.burgers}
+    burgers[key] = null
+    this.setState({burgers})
+  }
+
   render() {
     return (
       <div className='burger-paradise'>
@@ -79,6 +85,7 @@ class App extends Component {
           loadSampleBurgers={this.loadSampleBurgers}
           burgers={this.state.burgers}
           updBurgers={this.updBurgers}
+          deleteBurger={this.deleteBurger}
         />
       </div>
     );

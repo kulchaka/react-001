@@ -10,10 +10,11 @@ class MenuManagement extends Component {
         {
           Object.keys(this.props.burgers).map(key => {
             return <EditBurgerForm
-              updBurgers={this.props.updBurgers}
+              key={key}
               index={key}
               burger={this.props.burgers[key]}
-              key={key}
+              updBurgers={this.props.updBurgers}
+              deleteBurger={this.props.deleteBurger}
             />
           })
         }

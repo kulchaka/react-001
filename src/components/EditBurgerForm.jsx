@@ -20,6 +20,7 @@ class EditBurgerForm extends Component {
         </select>
         <textarea onChange={this.handleEdite} name="decr" value={this.props.burger.desc}/>
         <input onChange={this.handleEdite} name="image" type="text" value={this.props.burger.image}/>
+        <button onClick={() => this.props.deleteBurger(this.props.index)}>Delete Burger</button>
       </div>
     );
   }
