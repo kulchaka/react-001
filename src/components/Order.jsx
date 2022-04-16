@@ -10,32 +10,36 @@ class Order extends Component {
       if (!this.props.burgers[key]) return null
 
       if (!isAvailable) {
-        return (
-          <CSSTransition
-            classNames="order"
-            key={key}
-            timeout={{enter: 500, exit: 500}}
-          >
-            <li className="unavailable" key={key}> Sorry, {this.props.burgers[key].name} NOT AVAILABLE</li>
-          </CSSTransition>
-        )
-      }
-      return (
-        <CSSTransition
+        return (<CSSTransition
           classNames="order"
           key={key}
           timeout={{enter: 500, exit: 500}}
         >
-          <li key={key}>
+          <li className="unavailable" key={key}> Sorry, {this.props.burgers[key].name} NOT AVAILABLE</li>
+        </CSSTransition>)
+      }
+      return (<CSSTransition
+        classNames="order"
+        key={key}
+        timeout={{enter: 500, exit: 500}}
+      >
+        <li key={key}>
         <span>
-          <span>{this.props.orders[key]} </span>
+          <TransitionGroup component='span' className='count'>
+            <CSSTransition
+              classNames='count'
+              key={this.props.orders[key]}
+              timeout={{enter: 500, exit: 500}}
+            >
+              <span>{this.props.orders[key]} </span>
+              </CSSTransition>
+            </TransitionGroup>
            x burgers {this.props.burgers[key].name}
           <span> {this.props.orders[key] * this.props.burgers[key].price}</span>
           <button onClick={() => this.props.deleteBurgerFromOrder(key)} className="cancellItem">&times;</button>
         </span>
-          </li>
-        </CSSTransition>
-      )
+        </li>
+      </CSSTransition>)
     }
 
     const orderIds = Object.keys(this.props.orders)
@@ -46,21 +50,13 @@ class Order extends Component {
       }
       return prev
     }, 0)
-    return (
-      <div className='order-wrap'>
-        <h2>Your order:</h2>
-        <TransitionGroup component="ul" className="order">
-          {
-            orderIds.map(e => renderList(e))
-          }
-        </TransitionGroup>
-        {
-          totalPrice ?
-            (<Shipment totalPrice={totalPrice}/>)
-            : (<div className="nothingSelected">Nothing Selected</div>)
-        }
-      </div>
-    );
+    return (<div className='order-wrap'>
+      <h2>Your order:</h2>
+      <TransitionGroup component="ul" className="order">
+        {orderIds.map(e => renderList(e))}
+      </TransitionGroup>
+      {totalPrice ? (<Shipment totalPrice={totalPrice}/>) : (<div className="nothingSelected">Nothing Selected</div>)}
+    </div>);
   }
 }
 

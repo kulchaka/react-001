@@ -18,3 +18,17 @@
   &.order-exit-active
     transform translateX(120%)
 
+.count-enter
+  transition .5s
+  transform translateY(100%)
+  &.count-enter-active
+    transform translateY(0)
+
+.count-exit
+  transition .5s
+  transform translateY(0)
+  position: absolute;
+  left 0
+  top 0
+  &.count-exit-active
+    transform translateY(-100%)
