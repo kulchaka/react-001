@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
+import PropTypes from "prop-types";
 
 class Shipment extends Component {
+
+  static propTypes = {
+    totalPrice: PropTypes.number
+  }
+
   render() {
     const shipping = this.props.totalPrice > 0 && this.props.totalPrice < 500 ? 99 : 0
     const shippingNeon = shipping === 0 ? (

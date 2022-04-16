@@ -1,8 +1,18 @@
 import React, {Component} from 'react';
 import AddBurgerForm from "./AddBurgerForm";
 import EditBurgerForm from "./EditBurgerForm";
+import PropTypes from "prop-types";
 
 class MenuManagement extends Component {
+
+  static propTypes = {
+    addBurger: PropTypes.func,
+    deleteBurger: PropTypes.func,
+    loadSampleBurgers: PropTypes.func,
+    updBurgers: PropTypes.func,
+    burgers: PropTypes.object
+  }
+
   render() {
     return (
       <div className='menu-admin'>

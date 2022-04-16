@@ -1,6 +1,12 @@
-import React, { Component, createRef } from "react";
+import React, {Component, createRef} from "react";
+import PropTypes from "prop-types";
 
 class AddBurgerForm extends Component {
+
+  static propTypes = {
+    addBurger: PropTypes.func
+  }
+
   nameRef = createRef();
   priceRef = createRef();
   statusRef = createRef();
@@ -41,7 +47,7 @@ class AddBurgerForm extends Component {
           <option value="available">Accessed</option>
           <option value="unavailable">NOT available</option>
         </select>
-        <textarea ref={this.descrRef} name="descr" placeholder="Descr" />
+        <textarea ref={this.descrRef} name="descr" placeholder="Descr"/>
         <input
           ref={this.imageRef}
           type="text"

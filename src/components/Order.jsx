@@ -1,8 +1,16 @@
 import React, {Component} from 'react';
 import Shipment from "./Shipment";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
+import PropTypes from "prop-types";
 
 class Order extends Component {
+
+  static propTypes = {
+    burgers: PropTypes.object,
+    orders: PropTypes.object,
+    deleteBurgerFromOrder: PropTypes.func
+  }
+
   render() {
     const renderList = (key) => {
       const isAvailable = this.props.burgers[key] && this.props.burgers[key].status === 'available'

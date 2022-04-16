@@ -1,4 +1,5 @@
 import React from 'react';
+import {string} from "prop-types";
 
 const Header = (props) => (
   <header className='top'>
@@ -20,5 +21,9 @@ const Header = (props) => (
     </div>
   </header>
 )
+
+Header.propTypes = {
+  title: string.isRequired
+}
 
 export default Header;
