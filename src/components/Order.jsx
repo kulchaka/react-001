@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Shipment from "./Shipment";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 
 class Order extends Component {
   render() {
@@ -9,16 +10,32 @@ class Order extends Component {
       if (!this.props.burgers[key]) return null
 
       if (!isAvailable) {
-        return <li className="unavailable" key={key}> Sorry, {this.props.burgers[key].name} NOT AVAILABLE</li>
+        return (
+          <CSSTransition
+            classNames="order"
+            key={key}
+            timeout={{enter: 500, exit: 500}}
+          >
+            <li className="unavailable" key={key}> Sorry, {this.props.burgers[key].name} NOT AVAILABLE</li>
+          </CSSTransition>
+        )
       }
-      return <li key={key}>
+      return (
+        <CSSTransition
+          classNames="order"
+          key={key}
+          timeout={{enter: 500, exit: 500}}
+        >
+          <li key={key}>
         <span>
           <span>{this.props.orders[key]} </span>
            x burgers {this.props.burgers[key].name}
           <span> {this.props.orders[key] * this.props.burgers[key].price}</span>
           <button onClick={() => this.props.deleteBurgerFromOrder(key)} className="cancellItem">&times;</button>
         </span>
-      </li>
+          </li>
+        </CSSTransition>
+      )
     }
 
     const orderIds = Object.keys(this.props.orders)
@@ -32,11 +49,11 @@ class Order extends Component {
     return (
       <div className='order-wrap'>
         <h2>Your order:</h2>
-        <ul className="order">
+        <TransitionGroup component="ul" className="order">
           {
             orderIds.map(e => renderList(e))
           }
-        </ul>
+        </TransitionGroup>
         {
           totalPrice ?
             (<Shipment totalPrice={totalPrice}/>)
