@@ -20,7 +20,6 @@ const Landing = (props) => {
   }
 
   const chooseRestaurant = () => {
-    console.log('You have chosen restaurant>>>: ', title)
     props.history.push(`/restaurant/${url}`)
   }
 
