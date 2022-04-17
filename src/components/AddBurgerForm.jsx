@@ -1,64 +1,71 @@
-import React, {Component, createRef} from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 
-class AddBurgerForm extends Component {
+const AddBurgerForm = (props) => {
 
-  static propTypes = {
-    addBurger: PropTypes.func
-  }
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState('')
+  const [status, setStatus] = useState('available')
+  const [desc, setDesc] = useState('')
+  const [image, setImage] = useState('')
 
-  nameRef = createRef();
-  priceRef = createRef();
-  statusRef = createRef();
-  descrRef = createRef();
-  imageRef = createRef();
 
-  createBurger = (event) => {
+  const createBurger = (event) => {
     event.preventDefault();
     const burger = {
-      name: this.nameRef.current.value,
-      price: +this.priceRef.current.value,
-      status: this.statusRef.current.value,
-      descr: this.descrRef.current.value,
-      image: this.imageRef.current.value,
+      name,
+      price: +price,
+      status,
+      desc,
+      image,
     };
-    this.props.addBurger(burger);
+    props.addBurger(burger);
+    console.log(burger)
     event.currentTarget.reset();
   };
 
-  render() {
-    return (
-      <form className="burger-edit" onSubmit={this.createBurger}>
-        <input
-          ref={this.nameRef}
-          type="text"
-          name="name"
-          placeholder="Name"
-          autoComplete="off"
-        />
-        <input
-          ref={this.priceRef}
-          type="text"
-          name="price"
-          placeholder="Price"
-          autoComplete="off"
-        />
-        <select ref={this.statusRef} name="status" className="status">
-          <option value="available">Accessed</option>
-          <option value="unavailable">NOT available</option>
-        </select>
-        <textarea ref={this.descrRef} name="descr" placeholder="Descr"/>
-        <input
-          ref={this.imageRef}
-          type="text"
-          name="image"
-          placeholder="Image"
-          autoComplete="off"
-        />
-        <button type="submit">+ Add on Menu</button>
-      </form>
-    );
-  }
+  return (
+    <form className="burger-edit" onSubmit={createBurger}>
+      <input
+        value={name}
+        onChange={(e) => setName(e.currentTarget.value)}
+        type="text"
+        name="name"
+        placeholder="Name"
+        autoComplete="off"
+      />
+      <input
+        onChange={(e) => setPrice(e.currentTarget.value)}
+        type="text"
+        name="price"
+        placeholder="Price"
+        autoComplete="off"
+      />
+      <select
+        onChange={(e) => setStatus(e.target.value)}
+        name="status"
+        className="status">
+        <option value="available">Accessed</option>
+        <option value="unavailable">NOT available</option>
+      </select>
+      <textarea
+        onChange={(e) => setDesc(e.currentTarget.value)}
+        name="desc"
+        placeholder="Desc"/>
+      <input
+        onChange={(e) => setImage(e.currentTarget.value)}
+        type="text"
+        name="image"
+        placeholder="Image"
+        autoComplete="off"
+      />
+      <button type="submit">+ Add on Menu</button>
+    </form>
+  );
+};
+
+AddBurgerForm.propTypes = {
+  addBurger: PropTypes.func
 }
 
 export default AddBurgerForm;
