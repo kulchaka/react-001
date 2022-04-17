@@ -32,7 +32,7 @@ class App extends Component {
     )
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate() {
     localStorage.setItem(this.props.match.params.restaurantId, JSON.stringify(this.state.orders))
   }
 
