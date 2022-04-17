@@ -20,7 +20,6 @@ const AddBurgerForm = (props) => {
       image,
     };
     props.addBurger(burger);
-    console.log(burger)
     event.currentTarget.reset();
   };
 
