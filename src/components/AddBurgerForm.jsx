@@ -31,7 +31,6 @@ const AddBurgerForm = (props) => {
   return (
     <form className="burger-edit" onSubmit={createBurger}>
       <input
-        value={name}
         onChange={(e) => setName(e.currentTarget.value)}
         type="text"
         name="name"
