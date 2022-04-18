@@ -20,6 +20,11 @@ const AddBurgerForm = (props) => {
       image,
     };
     props.addBurger(burger);
+    setName('')
+    setPrice('')
+    setStatus('available')
+    setDesc('')
+    setImage('')
     event.currentTarget.reset();
   };
 
